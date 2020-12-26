@@ -1,4 +1,6 @@
+require('dotenv').config(); // allows us to use .env (enviornment verables)
 const ejs = require("ejs");
+const stripe = require('stripe')(process.env.SECRET_KEY);
 const express = require("express");
 
 
@@ -10,10 +12,10 @@ app.set('view engine', 'ejs');
 
 app.route("/")
 	.get(function(req, res) {
-		res.render("home");
+		res.render("checkout");
 	});
 
-  
+
   app.listen(port, function() {
   	console.log(`Server started on port ${port}`);
   });
